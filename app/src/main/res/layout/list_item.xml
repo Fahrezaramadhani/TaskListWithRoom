@@ -13,6 +13,7 @@
 
     <!-- TODO: Update blank fragment layout -->
     <RelativeLayout
+        android:id="@+id/relativelayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#00bddc">
@@ -28,18 +29,59 @@
             android:textColor="@color/white"
             android:textSize="15dp" />
 
-
         <TextView
             android:id="@+id/TanggalPengumpulan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginStart="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="35dp"
             android:fontFamily="sans-serif-light"
             android:text="Tanggal"
             android:textColor="@color/black"
             android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/jam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="205dp"
+            android:layout_marginLeft="205dp"
+            android:layout_marginTop="35dp"
+            android:fontFamily="sans-serif-light"
+            android:text="jam"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
+
+        <ImageView
+            android:id="@+id/ivtanggal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="35dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="Icon"
+            android:maxWidth="25dp"
+            android:maxHeight="25dp"
+            android:scaleType="fitCenter" />
+
+        <ImageView
+            android:id="@+id/ivjam"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginStart="165dp"
+            android:layout_marginLeft="165dp"
+            android:layout_marginTop="35dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="Icon"
+            android:maxWidth="25dp"
+            android:maxHeight="25dp"
+            android:scaleType="fitCenter" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>
