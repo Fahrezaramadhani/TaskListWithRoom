@@ -1,6 +1,5 @@
 package com.example.tasklist;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,24 +8,23 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.DiffUtil;
+import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class adapter extends RecyclerView.Adapter<adapter.ViewHolder> {
-    Context context;
-    private listTask[] listdata;
+public class Adapter extends ListAdapter<ListTask, Adapter.ViewHolder> {
 
     // RecyclerView recyclerView;
-    public adapter(listTask[] listdata, Context ct) {
-        this.listdata = listdata;
-        context = ct;
+    public Adapter(DiffUtil.ItemCallback<ListTask> diffCallback) {
+        super(diffCallback);
     }
+
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater = LayoutInflater.from(context);
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View listItem= layoutInflater.inflate(R.layout.list_item, parent, false);
         ViewHolder viewHolder = new ViewHolder(listItem);
         return viewHolder;
@@ -35,32 +33,39 @@ public class adapter extends RecyclerView.Adapter<adapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        final listTask myListTugas = listdata[position];
-        holder.tv_taskNote.setText(listdata[position].getTaskNote());
-        holder.tv_tanggalPengumpulan.setText(listdata[position].getTanggalPengumpulan());
-        holder.iv_tanggal.setImageResource(listdata[position].getIv_tanggal());
-        holder.tv_jam.setText(listdata[position].getJam());
-        holder.iv_jam.setImageResource(listdata[position].getIv_jam());
+        ListTask myListTugas = getItem(position) ;
+        holder.tv_taskNote.setText(myListTugas.getTaskName());
+        holder.tv_tanggalPengumpulan.setText(myListTugas.getTanggalPengumpulan());
+        holder.iv_tanggal.setImageResource(myListTugas.getIv_tanggal());
+        holder.tv_jam.setText(myListTugas.getJam());
+        holder.iv_jam.setImageResource(myListTugas.getIv_jam());
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
-                bundle.putString("namaTugas",listdata[position].getTaskNote().toString());
-                bundle.putString("tanggal",listdata[position].getTanggalPengumpulan().toString());
-                bundle.putString("jam",listdata[position].getJam().toString());
-                Intent intent = new Intent(context,taskDetail.class);
+                bundle.putString("namaTugas",myListTugas.getTaskName().toString());
+                bundle.putString("tanggal",myListTugas.getTanggalPengumpulan().toString());
+                bundle.putString("jam",myListTugas.getJam().toString());
+                Intent intent = new Intent(view.getContext(), TaskDetail.class);
                 intent.putExtras(bundle);
-                context.startActivity(intent);
-                Toast.makeText(view.getContext(),"click on item: "+myListTugas.getTaskNote(),Toast.LENGTH_LONG).show();
+                view.getContext().startActivity(intent);
             }
         });
     }
 
+    static class WordDiff extends DiffUtil.ItemCallback<ListTask> {
+        @Override
+        public boolean areItemsTheSame(@NonNull ListTask oldItem, @NonNull ListTask newItem) {
+            return oldItem == newItem;
+        }
 
-    @Override
-    public int getItemCount() {
-        return listdata.length;
+        @Override
+        public boolean areContentsTheSame(@NonNull ListTask oldItem, @NonNull ListTask newItem) {
+            return oldItem.getTaskName().equals(newItem.getTaskName());
+        }
     }
+
+
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public TextView tv_taskNote;

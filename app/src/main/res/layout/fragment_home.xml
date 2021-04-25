@@ -3,28 +3,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".HomeFragment">
 
-    <TextView
-        android:id="@+id/homeTextView"
-        android:layout_width="410dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:height="38dp"
-        android:background="#00bddc"
-        android:text="@string/hello_blank_fragment"
-        android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="30sp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ListHome"
         android:layout_width="450dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="0dp"
         android:background="@color/white"
         android:clickable="true"
         android:focusable="true"
         tools:context="example.javatpoint.com.recyclerviewlist.MainActivity"
         tools:itemCount="4" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="end|bottom"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="45dp"
+        android:contentDescription="submit"
+        app:backgroundTint="@color/white"
+        android:src="@drawable/ic_baseline_add_circle_24" />
+
+
 </RelativeLayout>

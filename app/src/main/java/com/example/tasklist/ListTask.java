@@ -1,23 +1,33 @@
 package com.example.tasklist;
 
-public class listTask {
-    private String taskNote;
+import androidx.annotation.NonNull;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity(tableName = "DataTugas")
+public class ListTask {
+    @PrimaryKey
+    @NonNull
+    @ColumnInfo(name = "TaskName")
+    private String taskName;
+    @ColumnInfo(name = "Tanggal")
     private String tanggalPengumpulan;
     private String jam;
     private int iv_jam;
     private int iv_tanggal;
-    public listTask(String taskNote, String tanggalPengumpulan, int iv_tanggal, String jam, int iv_jam) {
-        this.taskNote = taskNote;
+    public ListTask(String taskName, String tanggalPengumpulan, int iv_tanggal, String jam, int iv_jam) {
+        this.taskName = taskName;
         this.tanggalPengumpulan = tanggalPengumpulan;
         this.iv_tanggal = iv_tanggal;
         this.jam = jam;
         this.iv_jam = iv_jam;
     }
-    public String getTaskNote() {
-        return taskNote;
+    public String getTaskName() {
+        return taskName;
     }
-    public void setTaskNote(String taskNote) {
-        this.taskNote = taskNote;
+    public void setTaskName(String taskNote) {
+        this.taskName = taskName;
     }
     public String getTanggalPengumpulan() {
         return tanggalPengumpulan;

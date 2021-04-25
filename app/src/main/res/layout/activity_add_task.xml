@@ -9,36 +9,37 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
+        <EditText
+            android:id="@+id/isi_namaTugas"
+            android:layout_width="329dp"
+            android:layout_height="44dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="60dp"
+            android:background="@color/white"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+        <EditText
+            android:id="@+id/isi_tanggal"
+            android:layout_width="150dp"
+            android:layout_height="44dp"
+            android:layout_marginLeft="220dp"
+            android:layout_marginTop="175dp"
+            android:background="@color/white"
+            android:gravity="center_vertical|right"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+        <EditText
             android:id="@+id/isi_jam"
             android:layout_width="150dp"
             android:layout_height="44dp"
             android:layout_marginLeft="220dp"
             android:layout_marginTop="225dp"
             android:gravity="center_vertical|right"
-            android:text="jam"
+            android:background="@color/white"
             android:textColor="@color/black"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/isi_tanggal"
-            android:layout_width="150dp"
-            android:layout_height="44dp"
-            android:layout_marginLeft="220dp"
-            android:layout_marginTop="175dp"
-            android:text="tanggal"
-            android:gravity="center_vertical|right"
-            android:textColor="@color/black"
-            android:textSize="24sp" />
-
-        <TextView
-            android:id="@+id/isi_namaTugas"
-            android:layout_width="329dp"
-            android:layout_height="44dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="60dp"
-            android:textColor="@color/black"
-            android:textSize="24sp" />
+            android:textSize="24sp"  />
 
         <TextView
             android:id="@+id/tv_tgl"
@@ -46,8 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:layout_marginTop="175dp"
-            android:text="Tanggal"
-            android:textSize="24dp"/>
+            android:text="Tanggal" />
 
         <TextView
             android:id="@+id/tv_jam"
@@ -55,16 +55,15 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="50dp"
             android:layout_marginTop="225dp"
-            android:text="Jam"
-            android:textSize="24dp"/>
+            android:text="Jam" />
 
         <Button
-            android:id="@+id/delete"
+            android:id="@+id/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
             android:background="@color/Main_Color"
-            android:text="Hapus"
+            android:text="Save"
             android:layout_marginBottom="20dp"
             android:textColor="@color/black"
             app:backgroundTint="@color/white" />

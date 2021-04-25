@@ -1,26 +1,38 @@
 package com.example.tasklist;
 
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
-public class taskDetail extends AppCompatActivity {
+public class TaskDetail extends AppCompatActivity {
+    private TaskViewModel taskViewModel;
     String namaTugas, tanggal, jam;
     TextView kolomNama;
     TextView kolomTanggal;
     TextView kolomJam;
+    Button delete;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
 
-        kolomNama =  findViewById(R.id.namatugas);
-        kolomTanggal =  findViewById(R.id.kolom_tanggal);
-        kolomJam =  findViewById(R.id.kolom_jam);
+        kolomNama =  findViewById(R.id.isi_namaTugas);
+        kolomTanggal =  findViewById(R.id.isi_tanggal);
+        kolomJam =  findViewById(R.id.isi_jam);
+
+        delete = findViewById(R.id.delete);
 
         getData();
         setData();
+
+        taskViewModel = new ViewModelProvider(this,new ViewModelProvider.AndroidViewModelFactory(getApplication())).get(TaskViewModel.class);
+        delete.setOnClickListener(View->{
+            taskViewModel.delete(namaTugas);
+            finish();
+        });
     }
 
     public void getData(){
